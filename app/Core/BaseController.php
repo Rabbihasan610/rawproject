@@ -1,4 +1,11 @@
 <?php
 
-// 1. render view
-// 2. pass data to view
+namespace App\Core;
+
+class BaseController
+{
+    protected function view(string $view, array $data = []): void
+    {
+        View::render($view, $data);
+    }
+}

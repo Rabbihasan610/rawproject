@@ -6,3 +6,5 @@ if(!function_exists('view')) {
         require "html/$view.php";
     }
 }
+
+// @yield('content');

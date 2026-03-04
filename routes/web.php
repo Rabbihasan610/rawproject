@@ -1,7 +1,10 @@
 <?php
 
+use App\Controllers\Frontend\WebController;
 use App\Core\App;
 
 $router = App::router();
 
-$router->get('/', [\App\Controllers\WelcomeController::class, 'index']);
+$router->get('/', [WebController::class, 'index']);
+
+// MVC

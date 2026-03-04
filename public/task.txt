@@ -1,0 +1,18 @@
+1. Home page design (Header, Hero section, Blog Section, Gallery Section, Footer)
+2. Login page design (Admin ar jonno)
+3. Register page
+4. Contact page
+
+// dashboard 
+
+
+// middleware kivabe kaj kore?
+// csrf token kivabe kaj kore?
+// config kivabe kaj kore
+// DB/PDO kivabe kaj kore
+
+
+
+
+
+

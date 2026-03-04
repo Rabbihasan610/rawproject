@@ -6,5 +6,7 @@ class Response {
     {
         header("Location: $to");
         exit;
+
+        // json response
     }
 }
