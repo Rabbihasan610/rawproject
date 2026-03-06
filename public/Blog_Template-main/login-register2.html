@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ultra 3D RGB Login Register</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#050505;
+overflow:hidden;
+}
+
+/* animated rgb background */
+body::before{
+content:"";
+position:absolute;
+width:600px;
+height:600px;
+background:linear-gradient(45deg,red,blue,cyan,lime,magenta,red);
+filter:blur(120px);
+animation:spin 12s linear infinite;
+}
+
+@keyframes spin{
+0%{transform:rotate(0deg)}
+100%{transform:rotate(360deg)}
+}
+
+.container{
+position:relative;
+width:380px;
+perspective:1200px;
+}
+
+.card{
+position:relative;
+padding:40px;
+border-radius:20px;
+backdrop-filter:blur(25px);
+background:rgba(20,20,20,.6);
+border:1px solid rgba(255,255,255,.1);
+box-shadow:
+0 0 20px rgba(255,0,255,.5),
+0 0 40px rgba(0,255,255,.4),
+0 0 80px rgba(255,0,255,.3);
+transform-style:preserve-3d;
+transition:.6s;
+}
+
+.card:hover{
+transform:rotateY(8deg) rotateX(8deg) scale(1.03);
+}
+
+h2{
+text-align:center;
+color:#fff;
+margin-bottom:25px;
+letter-spacing:2px;
+}
+
+.input-group{
+margin-bottom:18px;
+}
+
+input{
+width:100%;
+padding:12px 14px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,.15);
+background:rgba(0,0,0,.5);
+color:#fff;
+outline:none;
+transition:.3s;
+}
+
+input:focus{
+border-color:cyan;
+box-shadow:0 0 10px cyan;
+}
+
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:12px;
+background:linear-gradient(45deg,#ff00ff,#00ffff,#ff00ff);
+background-size:300%;
+color:#fff;
+font-weight:600;
+letter-spacing:1px;
+cursor:pointer;
+transition:.4s;
+}
+
+button:hover{
+background-position:right;
+box-shadow:0 0 20px cyan,0 0 40px magenta;
+}
+
+.switch{
+text-align:center;
+margin-top:18px;
+color:#bbb;
+font-size:14px;
+cursor:pointer;
+}
+
+.switch:hover{
+color:#fff;
+text-shadow:0 0 8px cyan;
+}
+
+/* floating particles */
+.particle{
+position:absolute;
+width:4px;
+height:4px;
+background:cyan;
+border-radius:50%;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);opacity:0}
+50%{opacity:1}
+100%{transform:translateY(-800px);opacity:0}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h2 id="title">LOGIN</h2>
+
+<div class="input-group">
+<input type="email" placeholder="Email">
+</div>
+
+<div class="input-group">
+<input type="password" placeholder="Password">
+</div>
+
+<button id="btn">Login</button>
+
+<div class="switch" onclick="toggleForm()" id="switchText">
+Don't have account? Register
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function toggleForm(){
+
+let title=document.getElementById("title")
+let btn=document.getElementById("btn")
+let switchText=document.getElementById("switchText")
+
+if(title.innerText=="LOGIN"){
+
+ title.innerText="REGISTER"
+ btn.innerText="Register"
+ switchText.innerText="Already have account? Login"
+
+}else{
+
+ title.innerText="LOGIN"
+ btn.innerText="Login"
+ switchText.innerText="Don't have account? Register"
+
+}
+
+}
+
+/* particle generator */
+
+for(let i=0;i<40;i++){
+
+let p=document.createElement("div")
+p.classList.add("particle")
+
+p.style.left=Math.random()*100+"vw"
+p.style.animationDuration=4+Math.random()*6+"s"
+p.style.opacity=Math.random()
+
+ document.body.appendChild(p)
+
+}
+
+</script>
+
+</body>
+</html>

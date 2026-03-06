@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium 3D RGB Auth UI</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#030303;
+overflow:hidden;
+}
+
+/* animated neon gradient background */
+body::before{
+content:"";
+position:absolute;
+width:900px;
+height:900px;
+background:conic-gradient(red,magenta,blue,cyan,lime,red);
+filter:blur(150px);
+animation:spin 18s linear infinite;
+}
+
+@keyframes spin{
+0%{transform:rotate(0)}
+100%{transform:rotate(360deg)}
+}
+
+.container{
+position:relative;
+width:420px;
+perspective:1400px;
+}
+
+.card-wrapper{
+width:100%;
+height:500px;
+position:relative;
+transform-style:preserve-3d;
+transition:transform .8s;
+}
+
+.container.flip .card-wrapper{
+transform:rotateY(180deg);
+}
+
+.card{
+position:absolute;
+width:100%;
+height:100%;
+backface-visibility:hidden;
+padding:40px;
+border-radius:22px;
+background:rgba(20,20,20,.55);
+backdrop-filter:blur(25px);
+border:1px solid rgba(255,255,255,.08);
+box-shadow:
+0 0 20px rgba(0,255,255,.4),
+0 0 40px rgba(255,0,255,.3),
+0 0 80px rgba(0,255,255,.2);
+}
+
+.register{
+transform:rotateY(180deg);
+}
+
+h2{
+color:white;
+text-align:center;
+margin-bottom:25px;
+letter-spacing:2px;
+}
+
+.input-group{
+margin-bottom:18px;
+}
+
+input{
+width:100%;
+padding:12px 14px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,.15);
+background:rgba(0,0,0,.5);
+color:white;
+outline:none;
+transition:.3s;
+}
+
+input:focus{
+border-color:cyan;
+box-shadow:0 0 10px cyan;
+}
+
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:12px;
+background:linear-gradient(45deg,#ff00ff,#00ffff,#ff00ff);
+background-size:300%;
+color:white;
+font-weight:600;
+letter-spacing:1px;
+cursor:pointer;
+transition:.4s;
+}
+
+button:hover{
+background-position:right;
+box-shadow:0 0 20px cyan,0 0 40px magenta;
+}
+
+.switch{
+margin-top:18px;
+text-align:center;
+color:#bbb;
+font-size:14px;
+cursor:pointer;
+}
+
+.switch:hover{
+color:white;
+text-shadow:0 0 8px cyan;
+}
+
+/* neon mouse follower */
+.neon{
+position:absolute;
+width:300px;
+height:300px;
+border-radius:50%;
+pointer-events:none;
+background:radial-gradient(circle,rgba(0,255,255,.6),transparent 60%);
+filter:blur(40px);
+transform:translate(-50%,-50%);
+}
+
+/* floating particles */
+.particle{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+animation:float linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);opacity:0}
+50%{opacity:1}
+100%{transform:translateY(-100vh);opacity:0}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="neon" id="neon"></div>
+
+<div class="container" id="container">
+    <div class="card-wrapper">
+
+        <!-- LOGIN PAGE -->
+        <div class="card login">
+
+        <h2>LOGIN</h2>
+
+        <div class="input-group">
+        <input type="email" placeholder="Email">
+        </div>
+
+        <div class="input-group">
+        <input type="password" placeholder="Password">
+        </div>
+
+        <button>Login</button>
+
+        <div class="switch" onclick="flipCard()">
+        Don't have account? Register
+        </div>
+
+        </div>
+
+        <!-- REGISTER PAGE -->
+        <div class="card register">
+
+        <h2>REGISTER</h2>
+
+        <div class="input-group">
+        <input type="text" placeholder="Full Name">
+        </div>
+
+        <div class="input-group">
+        <input type="email" placeholder="Email">
+        </div>
+
+        <div class="input-group">
+        <input type="password" placeholder="Password">
+        </div>
+
+        <button>Create Account</button>
+
+        <div class="switch" onclick="flipCard()">
+        Already have account? Login
+        </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+function flipCard(){
+
+const container=document.getElementById("container")
+container.classList.toggle("flip")
+
+}
+
+/* neon mouse follower */
+
+const neon=document.getElementById("neon")
+
+document.addEventListener("mousemove",e=>{
+
+neon.style.left=e.clientX+"px"
+neon.style.top=e.clientY+"px"
+
+})
+
+/* particles */
+
+for(let i=0;i<60;i++){
+
+let p=document.createElement("div")
+
+p.classList.add("particle")
+
+p.style.left=Math.random()*100+"vw"
+
+p.style.animationDuration=5+Math.random()*8+"s"
+
+p.style.opacity=Math.random()
+
+document.body.appendChild(p)
+
+}
+
+</script>
+
+</body>
+</html>
