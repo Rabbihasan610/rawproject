@@ -19,6 +19,7 @@ class Router {
     private function add(string $method, string $path, $handler, array $cm = []): void
     {
         $path = '/' . trim($path, '/');
+
         $path = $path === '/' ? '/' : rtrim($path, '/');
 
         $this->routes[$method][$path] = [
@@ -56,6 +57,7 @@ class Router {
 
 
         http_response_code(404);
+
         echo '404 Not Found';
 
     }

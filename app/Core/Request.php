@@ -10,9 +10,12 @@ class Request {
     public static function uriPath(): string
     {
         $uri  = $_SERVER['REQUEST_URI'] ?? '/';
+
+
         $path = parse_url($uri, PHP_URL_PATH) ?? '/';
 
         $scriptName = $_SERVER['SCRIPT_NAME'] ?? '';
+
         $basePath   = str_replace('\\', '/', dirname($scriptName));
 
         if ($basePath !== '/' && str_starts_with($path, $basePath)) {

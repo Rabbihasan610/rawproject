@@ -10,4 +10,11 @@ class WebController extends BaseController
     {
         return $this->view('frontend.home');
     }
+
+
+    public function about()
+    {
+
+        return $this->view('frontend.about');
+    }
 }
