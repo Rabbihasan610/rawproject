@@ -10,9 +10,9 @@ class Router {
        $this->add('GET', $path, $handler, $cm);
     }
 
-    public function post(string $path, callable $handler): void
+    public function post(string $path, $handler, array $cm = []): void
     {
-        $this->add('POST', $path, $handler);
+        $this->add('POST', $path, $handler, $cm);
     }
 
 
@@ -69,6 +69,19 @@ class Router {
     {
         $handler = $info['handler'];
         $cm      = $info['cm'] ?? [];
+
+        // middleware
+
+        foreach($cm as $middleware) {
+            if($middleware === 'auth' && !Middlware::auth()) {
+                return;
+            }
+
+            if($middleware === 'guest' && !Middlware::guest()) {
+                return;
+            }
+
+        }
 
         if (is_callable($handler)) {
             call_user_func_array($handler, $params);

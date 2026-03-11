@@ -12,6 +12,8 @@ class App {
     {
         Env::load($basePath . '/.env');
 
+        Session::start();
+
         self::$router = new Router();
         self::$request = new Request();
         self::$response = new Response();

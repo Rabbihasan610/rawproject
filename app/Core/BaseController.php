@@ -8,4 +8,10 @@ class BaseController
     {
         View::render($view, $data);
     }
+
+
+    protected function adminView(string $view, array $data = []): void
+    {
+        View::adminRender($view, $data);
+    }
 }
