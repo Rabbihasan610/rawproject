@@ -54,9 +54,11 @@ body{
             </nav>
 
 
-            // Main Content
+            <?php 
 
-            <?php echo $user_id; ?>
+             print_r($user);
+            
+            ?>
 
         </div>
     </div>

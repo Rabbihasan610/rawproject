@@ -6,6 +6,7 @@ use App\Core\CSRF;
 use App\Core\Request;
 use App\Core\Response;
 use App\Core\Session;
+use App\Models\User;
 
 class AuthController extends BaseController
 {
@@ -41,6 +42,8 @@ class AuthController extends BaseController
             Session::flash('error', 'Password must be at least 6 characters.'); 
             return $response->redirect('/login');
         }
+
+        $user = User::find(1);
 
         Session::set('user_id', 1);
 
